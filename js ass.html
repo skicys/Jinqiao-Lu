@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body onload="win()">
+ <div id="create" onclick="hide()"></div>
+  <button onclick="button1()">Greet</button>
+  <button onclick="button2()">Check age</button>
+   <input type="text" id="nk">
+  <button onclick="button3()">Guess number</button>
+  <button onclick="button4()">Show text</button>
+  <button onclick="button5()">Random numbers</button>
+  <button onclick="button6()">Show min and max</button>
+   <h1 id="change" style="display:none">change</h1>
+     <div id="result"></div>
+
+  <script>
+    function win() {
+      let dat = new Date();
+     alert('Today is ' + dat.toLocaleDateString());
+      
+    
+      let ele = document.getElementById('create');
+      ele.innerHTML = '<h1>hello world</h1>';
+    }
+
+    function button1() {
+      let name = prompt('What is your name');
+     let hours = new Date().getHours();
+     let greeting;
+      if (hours < 12) {
+        greeting = 'Good morning';
+      } 
+       else if (hours < 18) {
+       greeting = 'Good afternoon';
+      }
+        else {   greeting = 'Good night';
+      }
+      alert(greeting + name);
+    }
+
+  function button2() {
+       let age = prompt('How old are you?');
+     if (age < 10) {
+       alert('You are too young');
+      }
+    }
+
+   function hide() {
+      document.getElementById('create').style.display = 'none';
+    }
+
+    document.getElementById('nk').onblur = function() {
+      let nickname = document.getElementById('nk').value;
+       if (nickname[0] === 'x' || nickname[0] === 'y' || nickname[0] === 'z') {
+        alert('rare name');
+      }
+       if (nickname.length > 8) {
+        alert('long name');
+      }
+       if (/\d/.test(nickname)) {
+        alert('typo found!');
+      }
+    }
+
+     function button3() {
+       let rn = Math.ceil(Math.random() * 10);
+       for (let i = 1; i <= 3; i++) {
+        const guess = prompt('Guess a number between 1 and 10');
+        if (guess == rn) {
+          alert('Correct');
+          break;
+        } 
+        else if (guess > rn) {
+          alert('Too big');
+        }
+        else {
+          alert('Too small');
+        }
+      }
+    }
+
+     function button4() {
+      const changet = document.getElementById('change');
+     changet.style.display = 'block';
+     changet.style.textShadow = '2px 2px red';
+     changet.style.fontFamily = 'Impact';
+      changet.style.opacity = '0.5';
+    }
+
+     let numarr = [];
+     function button5() {
+      for (let i = 0; i < 5; i++) {
+        let ran = Math.ceil(Math.random() * 1000);
+        numarr.push(ran);
+      }
+      alert(numarr);
+    }
+
+       function button6() {
+      if (numarr.length > 0) {
+        let min = Math.min(...numarr)
+        let max = Math.max(...numarr)
+        document.getElementById('result').innerHTML = 'smallest = ' + min + ' biggest = ' + max;
+      }
+    }
+  </script>
+</body>
+</html>
